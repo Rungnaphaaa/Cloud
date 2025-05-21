@@ -1,6 +1,11 @@
 pipeline {
     agent any
     stages {
+        stage('Clone') {
+            steps {
+                git url: 'https://github.com/Rungnaphaaa/Project-Cloud.git', branch: 'main'
+            }
+        }
         stage('Clean Containers') {
             steps {
                 sh 'docker compose --project-name cloud down frontend user-service recipe-service rating-service favorite-service api-gateway reverse-proxy'
